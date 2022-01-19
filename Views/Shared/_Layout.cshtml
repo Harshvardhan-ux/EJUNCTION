@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - e-Junction.com</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body> 
+         
+    
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <img style="position: absolute;top: 8px;left: 80px;width: 50px;height: 50px;" src="~/Images/Logo.png" />
+                
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/"><img style="position: unset; top: 1px;left: 0px;width: 170px;height: 50px;" src="~/Images/Name.png" /> </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    @*<li>@Html.ActionLink("TOYS", "Index", "Product")
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" data-toggled="dropdown">@Html.ActionLink("TOYS", "Index", "Product")</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">CARS</a></li>
+                            <li><a href="#">PLANE</a></li>
+                            <li><a href="#">TRUCK</a></li>
+                        </ul>*@
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" role="button" aria-expanded="false" href="#" data-toggle="dropdown">TOYS<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("CARS", "Index", "Product", null, new { id = "item 1" })</li>
+                            <li>@Html.ActionLink("PLANE", "Index", "Product", null, new { id = "item 2" })</li>
+                            <li>@Html.ActionLink("TRUCK", "Index", "Product", null, new { id = "item 3" })</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Cart", "Index", "CartItem")</li>
+                </ul>
+                
+                @Html.Partial("_LoginPartial")
+                <div class="pull-right">
+                    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+                    {
+
+                        <input id="SearchString" name="SearchString" type="text" value="" style="margin-top: 18px;">
+                            <Input type="submit" class="glyphicon-search" value="Search" />
+
+                    }
+             </div>
+            </div>
+        </div>
+    </div>
+    <div @*class="container body-content"*@>
+        @RenderBody()
+        @*<div class="img">
+        <img src="~/Images/03.jpg" width="1400"height="670">
+    </div>*@
+        <hr />
+        <footer>
+            <span>
+                &nbsp;&nbsp;&nbsp; &copy; @DateTime.Now.Year e-Junction.com &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Home", "Index", "Home")&nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("About", "About", "Home")&nbsp;&nbsp;&nbsp;&nbsp;
+                @Html.ActionLink("Contact", "Contact", "Home")&nbsp;&nbsp;&nbsp;&nbsp;
+            </span>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

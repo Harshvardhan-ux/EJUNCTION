@@ -1,0 +1,110 @@
+﻿@model IEnumerable<ECommerce.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<div class="container-fluid">
+    <div class="navbar " style="margin-top:50px">
+        <div class="MyNav">
+            <ul class="nav navbar-nav ">
+                @{ int i = 0;
+                    foreach (var item in Model)
+                    {
+                        i++;
+                        if (i == 4)
+                        {
+            <div class="row">
+                <div class="col-sm-6 col-md-3">
+                    <div class="thumbnail1">
+                        <img height="500" width="500" class="img-thumbnail" src="~/Images/@item.ImagePath" />
+                    </div>
+                    <div class="caption">
+                        <h4>@item.ProductName</h4>
+                        <p>@item.Description</p>
+                        <h3>Price:₹@item.UnitPrice</h3>
+                        <button class="btn btn-primary" onclick="location.href='@Url.Action("Create", "CartItem", new { id = item.ID })'">Add to Cart</button>
+                        @*<button class="btn btn-success" onclick="location.href='@Url.Action("Details", new { id = item.ID })'">View</button>*@
+                    </div>
+                </div>
+            </div>
+            <br />
+                            i = 0;
+                        }
+                        else
+                        {
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail1">
+                                    @*<a href="@Url.Action("Details","Product",new { id=item.ID }, null)">*@
+                                    <img height="500" width="500" class="img-thumbnail" src="~/Images/@item.ImagePath" />
+                                    @*</a>*@
+                                </div>
+                                <div class="caption">
+                                    <h4>@item.ProductName</h4>
+                                    <p>@item.Description</p>
+                                    <h3>Price:₹@item.UnitPrice</h3>
+                                    <button class="btn btn-primary" onclick="location.href='@Url.Action("Create", "CartItem", new { id = item.ID })'">Add to Cart</button>
+                                    @*<button class="btn btn-success" onclick="location.href='@Url.Action("Details", new { id = item.ID })'">View</button>*@
+                                </div>
+                            </div>
+                        }
+
+                    }
+                }
+        </div></ul>
+    </div>
+    </div>
+   
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImagePath)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            </td>
+        </tr>
+    }
+
+    </table>*@
